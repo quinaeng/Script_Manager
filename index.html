@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Button to run shell script</title>
+</head>
+<body>
+  <button onclick="runScript()">Run Script</button>
+
+  <script>
+    function runScript() {
+      // シェルスクリプトを実行するためのコマンドを生成する
+      var cmd = "bash ./script/test.sh";
+
+      // コマンドを実行する
+      var child_process = require('child_process');
+      child_process.exec(cmd, function(error, stdout, stderr) {
+        if (error) {
+          console.error('エラーが発生しました：', error);
+          return;
+        }
+        console.log('出力：', stdout);
+      });
+    }
+  </script>
+</body>
+</html>
+
